@@ -1,5 +1,8 @@
 # 地图瓦片图下载器
 
+#### 复制自本人的gitee
+#### gitee仓库地址：https://gitee.com/CrimsonHu/java_map_download
+
 #### Java17 LTS，springboot 2.7，JCEF使用chromium95内核
 #### 目前进度：
 - 使用rxjava优化代码，解决依赖循环注入的问题（已经完成，正在自测）
