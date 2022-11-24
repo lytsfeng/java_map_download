@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>map-download</groupId>
+    <artifactId>map-download</artifactId>
+    <version>1.0</version>
+    <name>地图下载器</name>
+    <description>地图下载器</description>
+
+    <properties>
+        <java.version>17</java.version>
+        <spring-boot.version>2.7.4</spring-boot.version>
+        <druid.version>1.2.8</druid.version>
+        <mybatis.version>2.2.2</mybatis.version>
+        <commons-io.version>2.8.0</commons-io.version>
+        <fastjson.version>1.2.79</fastjson.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- spring -->
+
+        <!-- druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+        <!-- druid -->
+
+        <!-- sqlite -->
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+        </dependency>
+        <!-- sqlite -->
+
+        <!-- mybatis -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <!-- mybatis -->
+
+        <!-- commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+        <!-- commons-io -->
+
+        <!-- okhttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+        </dependency>
+        <!-- okhttp -->
+
+        <!-- rxjava -->
+        <dependency>
+            <groupId>io.reactivex.rxjava2</groupId>
+            <artifactId>rxjava</artifactId>
+        </dependency>
+        <!-- rxjava -->
+
+        <!-- fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <!-- fastjson -->
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- lombok -->
+
+        <!-- flatlaf -->
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>0.44</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/ui/flatlaf-0.44.jar</systemPath>
+        </dependency>
+        <!-- flatlaf -->
+
+        <!-- JTattoo -->
+        <dependency>
+            <groupId>com.jtattoo</groupId>
+            <artifactId>JTattoo</artifactId>
+            <version>1.6.13</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/ui/JTattoo-1.6.13.jar</systemPath>
+        </dependency>
+        <!-- JTattoo -->
+
+        <!-- opencv -->
+        <dependency>
+            <groupId>org.openpnp</groupId>
+            <artifactId>opencv</artifactId>
+            <version>4.5.1-2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/opencv/opencv-4.5.1-2.jar</systemPath>
+        </dependency>
+        <!-- opencv -->
+
+        <!-- jxbrowser -->
+        <dependency>
+            <groupId>com.teamdev.jxbrowser</groupId>
+            <artifactId>jxbrowser-core</artifactId>
+            <version>6.24.3</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jxbrowser/jxbrowser-6.24.3.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.teamdev.jxbrowser</groupId>
+            <artifactId>jxbrowser-win64</artifactId>
+            <version>6.24.3</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jxbrowser/jxbrowser-win64-6.24.3.jar
+            </systemPath>
+        </dependency>
+        <!-- <dependency> <groupId>com.teamdev.jxbrowser</groupId> <artifactId>jxbrowser-linux64</artifactId>
+            <version>6.24.3</version> <scope>system</scope> <systemPath>${project.basedir}/lib/jxbrowser/jxbrowser-linux64-6.24.3.jar</systemPath>
+            </dependency> -->
+        <!--<dependency> <groupId>com.teamdev.jxbrowser</groupId> <artifactId>jxbrowser-mac</artifactId>
+            <version>6.24.3</version> <scope>system</scope> <systemPath>${project.basedir}/lib/jxbrowser/jxbrowser-mac-6.24.3.jar</systemPath>
+            </dependency> -->
+        <!-- jxbrowser -->
+
+        <!-- chromium embedded cef -->
+        <dependency>
+            <groupId>jcef</groupId>
+            <artifactId>jcef</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jcef/jcef.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jogl-all</groupId>
+            <artifactId>jogl-all</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jcef/jogl-all.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jogl-all-natives-windows-amd64</groupId>
+            <artifactId>jogl-all-natives-windows-amd64</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jcef/jogl-all-natives-windows-amd64.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>gluegen-rt</groupId>
+            <artifactId>gluegen-rt</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jcef/gluegen-rt.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>gluegen-rt-natives-windows-amd64</groupId>
+            <artifactId>gluegen-rt-natives-windows-amd64</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jcef/gluegen-rt-natives-windows-amd64.jar</systemPath>
+        </dependency>
+        <!-- chromium embedded cef -->
+
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <finalName>map-download</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <!-- 设置jar的入口类 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.jmd.Application</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!-- 添加本地library -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <!-- 打包过程忽略Junit测试 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <!-- 防止非java文件丢失 -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
+
+</project>

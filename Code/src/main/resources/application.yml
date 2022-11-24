@@ -1,0 +1,77 @@
+logging:
+  level:
+    root: info
+  file:
+    path: ./log
+    
+spring:
+  datasource:
+    url: jdbc:sqlite::resource:db.sqlite3
+    driver-class-name: org.sqlite.JDBC
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 'x' #用来检测连接是否有效的sql，要求是一个查询语句
+    testWhileIdle: true #申请连接的时候检测
+    testOnBorrow: false #申请连接时执行validationQuery检测连接是否有效，配置为true会降低性能
+    testOnReturn: false #归还连接时执行validationQuery检测连接是否有效，配置为true会降低性能
+mybatis:
+  mapper-locations: classpath*:com/jmd/db/dao/mapper/*Mapper.xml
+
+okhttp:
+  connect-timeout: 5000
+  read-timeout: 5000
+  write-timeout: 5000
+  max-idle-connections: 1024
+  keep-alive-duration: 5000
+  osm:
+    connect-timeout: 10000
+    read-timeout: 10000
+    write-timeout: 10000
+    max-idle-connections: 1024
+    keep-alive-duration: 5000
+  tian:
+    connect-timeout: 2500
+    read-timeout: 2500
+    write-timeout: 2500
+    max-idle-connections: 1024
+    keep-alive-duration: 5000
+  google:
+    connect-timeout: 5000
+    read-timeout: 5000
+    write-timeout: 5000
+    max-idle-connections: 1024
+    keep-alive-duration: 5000
+  amap:
+    connect-timeout: 2500
+    read-timeout: 2500
+    write-timeout: 2500
+    max-idle-connections: 1024
+    keep-alive-duration: 5000
+  tencent:
+    connect-timeout: 2500
+    read-timeout: 2500
+    write-timeout: 2500
+    max-idle-connections: 1024
+    keep-alive-duration: 5000
+  bing:
+    connect-timeout: 3500
+    read-timeout: 3500
+    write-timeout: 3500
+    max-idle-connections: 1024
+    keep-alive-duration: 5000
+  
+tile:
+  block-divide: 289
+  
+download:
+  retry: 1
+
+pool:
+  thread:
+    tile-calculation: 12
+    tile-download: 256  
