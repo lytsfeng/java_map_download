@@ -1,17 +1,13 @@
 package com.jmd.ui.tab.a_mapview.sub;
 
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
-import javax.annotation.PostConstruct;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
 import com.jmd.browser.BrowserType;
-import com.jmd.browser.inst.base.AbstractBrowser;
-import com.jmd.ui.MainFrame;
-import org.cef.browser.CefBrowser;
+import jakarta.annotation.PostConstruct;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +24,7 @@ public class BrowserPanel extends JPanel {
 
     private JPanel browserPanel;
     private JPanel devToolPanel;
+    @Getter
     private boolean devToolOpen = false;
     private JSplitPane splitPane;
 

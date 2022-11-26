@@ -1,13 +1,9 @@
 # 地图瓦片图下载器
 
-#### 复制自本人的gitee
-#### gitee仓库地址：https://gitee.com/CrimsonHu/java_map_download
+#### 本处为备份仓库，码云为主仓库
+#### 码云仓库地址：https://gitee.com/CrimsonHu/java_map_download
 
-#### Java17 LTS，springboot 2.7，JCEF使用chromium95内核
-#### 目前进度：
-- 使用rxjava优化代码，解决依赖循环注入的问题（已经完成，正在自测）
-- 等待springboot3正式版发布，第一时间吃上springboot3
-- 新版本仅优化代码，升级依赖，重写部分模块，无功能添加，可以放心下载2022-03-25版本使用
+#### 使用JetBrains Runtime 17，springboot 3.0，JCEF版本为chromium 104
 
 #### 介绍
 使用Java开发的地图瓦片图下载工具，支持以下XYZ瓦片图下载与合并。多线程瓦片图下载，最大限度地使用本机网络资源。个人业余作品，全网仅有的免费开源开箱即用的地图下载工具，业余时间不多，用爱发电，能跑就行。
@@ -27,6 +23,7 @@
 - 若无法打开，请将文件夹改为英文，并注意文件夹所在详细路径是否为全英文
 
 #### 更新历史
+- 2022-11-26：JRE换为JetBrains Runtime 17，更新至springboot 3.0.0，删除JxBrowser与JavaFX WebView，优化大量代码，更新谷歌地图域名
 - 2022-03-25：更新至Java17 LTS，springboot 2.6.4，JCEF更新至chromium95内核；优化代码
 - 2021-04-09：优化依赖结构，减少打包体积（注意：不要进行无意义的超巨大尺寸合并，那样OpenCV会内存溢出）
 - 2021-03-24：添加腾讯地图地图，添加坐标类型显示，修复部分问题
@@ -36,49 +33,42 @@
 - 2020-11-28：优化错误瓦片图自动重新下载功能
 - 2020-11-27：初步添加错误瓦片图自动重新下载功能，解决无法下载天地图的问题
 
-#### Liberica Jdk下载地址
-- 天翼云盘：https://cloud.189.cn/t/UNZv2aBRfiai (访问码:7q6g)
-- https://bell-sw.com/pages/downloads/#/java-17-current
+#### JetBrains Runtime下载地址
+- https://github.com/JetBrains/JetBrainsRuntime/releases
+- 在Binaries for developers这一栏中下载“JBR with JCEF”，文件名以“jbrsdk_jcef”开头的
 
 #### 代码运行说明
-1. 本软件用eclipse开发，基于springboot
-2. 开发环境：Liberica Jdk 17，Angular CLI 13
-3. IDE需要安装lombok插件
-4. Web部分使用Angular13开发，需nodejs与angular-cli环境
-5. 解压lib目录下的opencv(原版备份).jar文件，将opencv.dll放入至jdk/bin目录下（其他操作系统选择与之对应的库文件）
-6. 添加JCEF（仅支持Windows，eclipse为例）：Java Build Path >> 展开JRE，选中Native library location，点击Edit，选择当前项目目录下的binary_win64；
-7. pom.xml中已添加Windows、Linux、macOS(Intel)的jxbrowser离线jar包，根据自身平台选择
-7. 下述图片基于win10和macOS(Intel)平台运行
-8. 目前谷歌地图不能直接访问，现在提供http代理功能用以支持通过代理下载谷歌地图（不提供fq方法，fq自行解决）
+1. 开发环境：JetBrains Runtime，Angular CLI 14
+2. IDE需要安装lombok插件
+3. 解压lib目录下的opencv(原版备份).jar文件，Windows系统下将opencv.dll放入至jdk/bin目录，macOS系统下将libopencv.dylib放入至jdk/Contents/Home/lib目录
 
 #### 软件说明
 1. 使用springboot+swing+angular开发的桌面程序
 2. 内置若干swing主题皮肤
-3. webview使用JxBrowser Chromium、JavaFX webview、Chromium Embedded Framework三种实现方式可供选择
-4. 支持Windows与macOS(Intel)，macOS(ARM)本人没有机器故无法进行测试与适配
+3. Webview使用JetBrains Runtime自带的Chromium Embedded Framework
+4. 支持Windows与macOS
 5. 支持png与jpg格式存储瓦片图，并支持瓦片图合并
 6. 多线程瓦片图下载，最大限度地使用网络资源，拒绝付费限速
 7. 瓦片图下载使用okhttp3实现
 8. 使用OpenCV进行瓦片图合并，支持大尺寸png合成图
+9. 下述图片为各历史版本图片，新版与旧版整体上大致相同，不影响主要功能介绍
 
 #### 主要功能
 XYZ瓦片图下载与拼接
-![下载结果](https://images.gitee.com/uploads/images/2020/1025/194201_51cbcc76_1403243.png "RNOZ4TCN}]TF)I2S1V`P(B1.png")
-![瓦片图拼接示例3](https://images.gitee.com/uploads/images/2020/1025/191841_58a9107e_1403243.png "N1EK$(KS$(18YJ1KA2N{@XG.png")
-![瓦片图拼接示例1](https://images.gitee.com/uploads/images/2020/1025/184433_266b9408_1403243.png "QTQRF_H$FW`SBJ9R29]KU6W.png")
-![瓦片图拼接示例3](https://images.gitee.com/uploads/images/2020/1025/191831_0fe37c36_1403243.png ")W(9J7ZBMNRYQOBNW9Y}TZM.png")
-![瓦片图拼接示例2](https://images.gitee.com/uploads/images/2021/0322/192008_a3e72cda_1403243.jpeg "@6{(IVS_OQMOH[~R($KD5(7.jpg")
-![瓦片拼接结果集合](https://images.gitee.com/uploads/images/2020/1117/235757_070c3fc7_1403243.png "~7TH`BENU$T66FUDX0{R{0V.png")
-
-#### 最近更新（添加必应地图与腾讯地图）
-![主界面必应地图](https://images.gitee.com/uploads/images/2021/0322/190547_ef9e10bd_1403243.png "8CCX18[[YW)DHN@{5VZ(0RW.png")
-![主界面腾讯地图](https://images.gitee.com/uploads/images/2021/0324/012326_e90a2ee4_1403243.png "](]I`_27X@FU@5V{WP}TNGJ.png")
+![输入图片说明](Other/image/194201_51cbcc76_1403243.webp)
+![输入图片说明](Other/image/191841_58a9107e_1403243.webp)
+![输入图片说明](Other/image/184433_266b9408_1403243.webp)
+![输入图片说明](Other/image/190547_ef9e10bd_1403243.webp)
+![输入图片说明](Other/image/192008_a3e72cda_1403243.webp)
+![输入图片说明](Other/image/235757_070c3fc7_1403243.webp)
 
 #### 主要界面
-![主界面谷歌地图](https://images.gitee.com/uploads/images/2021/0322/191011_7b58ab8c_1403243.png "P3[FIH{H4WC9}YW5{OP8F%5.png")
-![主界面高德地图](https://images.gitee.com/uploads/images/2021/0322/190953_497f7569_1403243.png "L3AU~Q6%0K0YW~_IIR@]4JA.png")
-![主界面天地图](https://images.gitee.com/uploads/images/2021/0322/190713_68a1bd09_1403243.png "N83WEAPJK_2IO{W9L`K)@@7.png")
-![浏览器内核切换](https://images.gitee.com/uploads/images/2021/0322/191415_b83b6dfd_1403243.png "~5LGHGB(0A2KK)BYE]%{RMQ.png")
+![输入图片说明](Other/image/190547_ef9e10bd_1403243.webp)
+![输入图片说明](Other/image/012326_e90a2ee4_1403243.webp)
+![输入图片说明](Other/image/191011_7b58ab8c_1403243.webp)
+![输入图片说明](Other/image/190953_497f7569_1403243.webp)
+![输入图片说明](Other/image/190713_68a1bd09_1403243.webp)
+![输入图片说明](Other/image/191415_b83b6dfd_1403243.webp)
 
 #### 使用代理访问并下载谷歌地图（2021-02-18版本）
 ![代理1](https://images.gitee.com/uploads/images/2021/0218/152258_3b6f8231_1403243.jpeg "1613632674(1).jpg")

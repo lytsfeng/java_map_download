@@ -1,8 +1,8 @@
 package com.jmd.ui.tab.a_mapview.sub;
 
-import javax.annotation.PostConstruct;
 import javax.swing.JPanel;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 import com.jmd.common.StaticVar;
@@ -30,7 +30,7 @@ public class BottomInfoPanel extends JPanel {
                 StaticVar.FONT_SourceHanSansCNNormal_12, null));
         setLayout(new BorderLayout(0, 0));
 
-        JLabel leftLabel = new JLabel("WebView implement: ");
+        JLabel leftLabel = new JLabel(" JetBrains Runtime: " + System.getProperty("java.vm.version") + ", ");
         leftLabel.setFont(StaticVar.FONT_SourceHanSansCNNormal_12);
         add(leftLabel, BorderLayout.WEST);
 

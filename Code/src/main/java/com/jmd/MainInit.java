@@ -33,25 +33,10 @@ public class MainInit implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
         SwingUtilities.invokeLater(() -> {
-            if (StaticVar.IS_Windows_10 || StaticVar.IS_Windows_11) {
-                // Win10系统直接显示界面
-                showMainFrame();
-            } else {
-                // 其他系统先通过jtattoo触发窗口装饰后，再回归所选主题，然后显示界面
-                Setting setting = ApplicationSetting.getSetting();
-                Map<String, Object> map = new HashMap<>();
-                map.put("name", setting.getThemeName());
-                map.put("clazz", setting.getThemeClazz());
-                sharedService.pub(SharedType.CHANGE_THEME, map);
-                this.showMainFrame();
-            }
+            mainFrame.setVisible(true);
+            StartupWindow.getIstance().close();
         });
-        new Thread(() -> test.run()).start();
-    }
-
-    private void showMainFrame() {
-        mainFrame.setVisible(true);
-        StartupWindow.getIstance().close();
+        // new Thread(() -> test.run()).start();
     }
 
 }

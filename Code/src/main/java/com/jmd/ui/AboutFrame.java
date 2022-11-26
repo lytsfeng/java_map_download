@@ -4,13 +4,12 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.*;
-import javax.annotation.PostConstruct;
-import javax.swing.GroupLayout.Alignment;
 import java.awt.BorderLayout;
 import java.awt.Desktop;
 
 import com.jmd.rx.SharedService;
 import com.jmd.rx.SharedType;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootVersion;
 import org.springframework.stereotype.Component;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Component;
 import com.jmd.common.StaticVar;
 import com.jmd.util.CommonUtils;
 
-import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -56,58 +54,92 @@ public class AboutFrame extends JFrame {
 		springbootTextArea.setEditable(false);
 
 		JPanel panel = new JPanel();
+		panel.setLayout(null);
 		getContentPane().add(panel, BorderLayout.CENTER);
 
-		JLabel openjdkIconLabel = new JLabel("");
-		ImageIcon openjdkIconImage = new ImageIcon(Objects.requireNonNull(AboutFrame.class.getResource("/com/jmd/assets/icon/java.png")));
-		openjdkIconImage.setImage(openjdkIconImage.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
-		openjdkIconLabel.setIcon(openjdkIconImage);
+		JLabel jdkIconLabel = new JLabel("");
+		jdkIconLabel.setBounds(15, 10, 30, 30);
+		ImageIcon jdkIconImage = new ImageIcon(
+				Objects.requireNonNull(AboutFrame.class.getResource("/com/jmd/assets/icon/jetbrains.png")));
+		jdkIconImage.setImage(jdkIconImage.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
+		jdkIconLabel.setIcon(jdkIconImage);
+		panel.add(jdkIconLabel);
 
-		JLabel openjdkTextLabel = new JLabel("Liberica JDK 17");
-		openjdkTextLabel.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
+		JLabel jdkTextLabel = new JLabel("JetBrains Runtime 17");
+		jdkTextLabel.setBounds(55, 10, 166, 30);
+		jdkTextLabel.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
+		panel.add(jdkTextLabel);
+
+		JLabel jcefIconLabel = new JLabel("");
+		jcefIconLabel.setBounds(238, 10, 40, 30);
+		ImageIcon jcefIconImage = new ImageIcon(
+				Objects.requireNonNull(AboutFrame.class.getResource("/com/jmd/assets/icon/cef.png")));
+		jcefIconImage.setImage(jcefIconImage.getImage().getScaledInstance(40, 30, Image.SCALE_SMOOTH));
+		jcefIconLabel.setIcon(jcefIconImage);
+		panel.add(jcefIconLabel);
+
+		JLabel jcefTextLabel = new JLabel("JCEF 104");
+		jcefTextLabel.setBounds(288, 10, 156, 30);
+		jcefTextLabel.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
+		panel.add(jcefTextLabel);
 
 		JLabel openlayersIconLabel = new JLabel("");
+		openlayersIconLabel.setBounds(15, 46, 30, 30);
 		ImageIcon openlayersIconImage = new ImageIcon(
 				Objects.requireNonNull(AboutFrame.class.getResource("/com/jmd/assets/icon/openlayers.png")));
 		openlayersIconImage.setImage(openlayersIconImage.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
 		openlayersIconLabel.setIcon(openlayersIconImage);
+		panel.add(openlayersIconLabel);
 
-		JLabel openlayersTextLabel = new JLabel("OpenLayers 6.12.0");
+		JLabel openlayersTextLabel = new JLabel("OpenLayers 7.1.0");
+		openlayersTextLabel.setBounds(55, 46, 166, 30);
 		openlayersTextLabel.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
-
-		JLabel eclipseIconLabel = new JLabel("");
-		ImageIcon eclipseIconImage = new ImageIcon(Objects.requireNonNull(AboutFrame.class.getResource("/com/jmd/assets/icon/eclipse.png")));
+		ImageIcon eclipseIconImage = new ImageIcon(
+				Objects.requireNonNull(AboutFrame.class.getResource("/com/jmd/assets/icon/eclipse.png")));
 		eclipseIconImage.setImage(eclipseIconImage.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
-		eclipseIconLabel.setIcon(eclipseIconImage);
+		panel.add(openlayersTextLabel);
 
-		JLabel eclipseTextLabel = new JLabel("Window Builder 1.9.6");
-		eclipseTextLabel.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
-
-		JLabel gitIconlabel = new JLabel("");
-		ImageIcon gitIconImage = new ImageIcon(Objects.requireNonNull(AboutFrame.class.getResource("/com/jmd/assets/icon/git.png")));
+		JLabel gitIconLabel = new JLabel("");
+		gitIconLabel.setBounds(15, 118, 30, 30);
+		ImageIcon gitIconImage = new ImageIcon(
+				Objects.requireNonNull(AboutFrame.class.getResource("/com/jmd/assets/icon/git.png")));
 		gitIconImage.setImage(gitIconImage.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
-		gitIconlabel.setIcon(gitIconImage);
-		
-		JLabel opencvIconLabel = new JLabel("");
-		ImageIcon opencvIconImage = new ImageIcon(Objects.requireNonNull(AboutFrame.class.getResource("/com/jmd/assets/icon/opencv.png")));
-		opencvIconImage.setImage(opencvIconImage.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
-		opencvIconLabel.setIcon(opencvIconImage);
-		
-		JLabel opencvTextLabel = new JLabel("OpenCV 4.5.1");
-		opencvTextLabel.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
-		
+		gitIconLabel.setIcon(gitIconImage);
+		panel.add(gitIconLabel);
+
 		JLabel angularIconLabel = new JLabel("");
-		ImageIcon angularIconImage = new ImageIcon(Objects.requireNonNull(AboutFrame.class.getResource("/com/jmd/assets/icon/angular.png")));
+		angularIconLabel.setBounds(238, 46, 30, 30);
+		ImageIcon angularIconImage = new ImageIcon(
+				Objects.requireNonNull(AboutFrame.class.getResource("/com/jmd/assets/icon/angular.png")));
 		angularIconImage.setImage(angularIconImage.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
 		angularIconLabel.setIcon(angularIconImage);
-		
-		JLabel angularTextLabel = new JLabel("Angular 13");
+		panel.add(angularIconLabel);
+
+		JLabel angularTextLabel = new JLabel("Angular 14.2.7");
+		angularTextLabel.setBounds(278, 46, 166, 30);
 		angularTextLabel.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
+		panel.add(angularTextLabel);
+
+		JLabel opencvIconLabel = new JLabel("");
+		opencvIconLabel.setBounds(15, 82, 30, 30);
+		ImageIcon opencvIconImage = new ImageIcon(
+				Objects.requireNonNull(AboutFrame.class.getResource("/com/jmd/assets/icon/opencv.png")));
+		opencvIconImage.setImage(opencvIconImage.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
+		opencvIconLabel.setIcon(opencvIconImage);
+		panel.add(opencvIconLabel);
+
+		JLabel opencvTextLabel = new JLabel("OpenCV 4.5.5");
+		opencvTextLabel.setBounds(55, 82, 166, 30);
+		opencvTextLabel.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
+		panel.add(opencvTextLabel);
 
 		JLabel gitTextlabel = new JLabel(git);
+		gitTextlabel.setBounds(55, 118, 389, 30);
 		gitTextlabel.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
+		panel.add(gitTextlabel);
 
 		JButton gitCopyButton = new JButton("复制git地址");
+		gitCopyButton.setBounds(10, 158, 217, 29);
 		gitCopyButton.setFocusable(false);
 		gitCopyButton.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
 		gitCopyButton.addMouseListener(new MouseAdapter() {
@@ -119,8 +151,10 @@ public class AboutFrame extends JFrame {
 				}
 			}
 		});
+		panel.add(gitCopyButton);
 
 		JButton gitOpenButton = new JButton("打开git");
+		gitOpenButton.setBounds(233, 158, 211, 29);
 		gitOpenButton.setFocusable(false);
 		gitOpenButton.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
 		gitOpenButton.addMouseListener(new MouseAdapter() {
@@ -136,89 +170,15 @@ public class AboutFrame extends JFrame {
 				}
 			}
 		});
+		panel.add(gitOpenButton);
 
 		JTextArea tipTextArea = new JTextArea();
+		tipTextArea.setBounds(10, 193, 434, 78);
 		tipTextArea.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		tipTextArea.setLineWrap(true);
-		tipTextArea.setText("Build日期：2022-03-25");
+		tipTextArea.setText("Build日期：2022-11-26");
 		tipTextArea.setEditable(false);
-
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(tipTextArea, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(openjdkIconLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(openjdkTextLabel, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(opencvIconLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(opencvTextLabel))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(openlayersIconLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(openlayersTextLabel, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(angularIconLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(angularTextLabel))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(eclipseIconLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(eclipseTextLabel, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(gitIconlabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(gitTextlabel, GroupLayout.PREFERRED_SIZE, 350, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(gitCopyButton, GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(gitOpenButton, GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)))
-					.addContainerGap())
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(6)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-							.addComponent(openjdkIconLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-							.addComponent(openjdkTextLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-							.addGroup(gl_panel.createSequentialGroup()
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(opencvTextLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addComponent(opencvIconLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(openlayersIconLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(openlayersTextLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(eclipseIconLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(eclipseTextLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-							.addComponent(angularTextLabel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(angularIconLabel, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 30, Short.MAX_VALUE)))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(gitIconlabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-						.addComponent(gitTextlabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(gitOpenButton)
-						.addComponent(gitCopyButton))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(tipTextArea, GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		panel.setLayout(gl_panel);
+		panel.add(tipTextArea);
 
 		this.setTitle("关于地图下载器");
 		this.setSize(new Dimension(470, 450));
@@ -232,7 +192,7 @@ public class AboutFrame extends JFrame {
 	}
 
 	private void subShared() {
-		sharedService.sub(SharedType.CHANGE_THEME).subscribe((res) -> {
+		sharedService.sub(SharedType.UPDATE_UI).subscribe((res) -> {
 			SwingUtilities.invokeLater(() -> {
 				SwingUtilities.updateComponentTreeUI(this);
 			});

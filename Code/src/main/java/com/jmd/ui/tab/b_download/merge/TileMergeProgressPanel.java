@@ -1,7 +1,6 @@
 package com.jmd.ui.tab.b_download.merge;
 
 import java.awt.BorderLayout;
-import javax.annotation.PostConstruct;
 import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -10,6 +9,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import com.jmd.rx.SharedService;
 import com.jmd.rx.SharedType;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

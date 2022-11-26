@@ -131,19 +131,19 @@ public class CommonUtils {
 	}
 
 	public static boolean isMac() {
-		return System.getProperties().getProperty("os.name").toUpperCase().indexOf("MAC OS") != -1;
+		return System.getProperties().getProperty("os.name").toUpperCase().contains("MAC OS");
 	}
 
 	public static boolean isWindows() {
-		return System.getProperties().getProperty("os.name").toUpperCase().indexOf("WINDOWS") != -1;
+		return System.getProperties().getProperty("os.name").toUpperCase().contains("WINDOWS");
 	}
 
     public static boolean isWindows10() {
-        return System.getProperties().getProperty("os.name").toUpperCase().indexOf("WINDOWS 10") != -1;
+        return System.getProperties().getProperty("os.name").toUpperCase().contains("WINDOWS 10");
     }
 
 	public static boolean isWindows11() {
-		return System.getProperties().getProperty("os.name").toUpperCase().indexOf("WINDOWS 11") != -1;
+		return System.getProperties().getProperty("os.name").toUpperCase().contains("WINDOWS 11");
 	}
 
 }

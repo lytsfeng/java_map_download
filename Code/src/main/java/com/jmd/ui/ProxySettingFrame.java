@@ -3,11 +3,11 @@ package com.jmd.ui;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-import javax.annotation.PostConstruct;
 import javax.swing.*;
 
 import com.jmd.rx.SharedService;
 import com.jmd.rx.SharedType;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -107,7 +107,7 @@ public class ProxySettingFrame extends JFrame {
 	}
 
 	private void subShared() {
-		sharedService.sub(SharedType.CHANGE_THEME).subscribe((res) -> {
+		sharedService.sub(SharedType.UPDATE_UI).subscribe((res) -> {
 			SwingUtilities.invokeLater(() -> {
 				SwingUtilities.updateComponentTreeUI(this);
 			});

@@ -11,10 +11,8 @@ import org.springframework.stereotype.Component;
 
 import com.jmd.Application;
 import com.jmd.browser.inst.ChromiumEmbeddedCefBrowserInst;
-import com.jmd.browser.inst.TeamDevJxBrowserInst;
 import com.jmd.browser.inst.base.AbstractBrowser;
 import com.jmd.callback.JavaScriptExecutionCallback;
-import com.jmd.util.CommonUtils;
 
 @Component
 public class BrowserEngine {
@@ -22,18 +20,18 @@ public class BrowserEngine {
     @Autowired
     private MapWebSocketHandler wsHandler;
 
-    private BrowserType type = CommonUtils.isWindows() ? BrowserType.CHROMIUM_EMBEDDED_CEF_BROWSER : BrowserType.TEAMDEV_JX_BROWSER;
+    private BrowserType type = BrowserType.CHROMIUM_EMBEDDED_CEF_BROWSER;
     private AbstractBrowser browser = null;
 
     public void init(BrowserInitCallback callback) {
         switch (type) {
-            case TEAMDEV_JX_BROWSER -> browser = TeamDevJxBrowserInst.getIstance();
-            case CHROMIUM_EMBEDDED_CEF_BROWSER -> browser = ChromiumEmbeddedCefBrowserInst.getIstance();
+            case CHROMIUM_EMBEDDED_CEF_BROWSER -> browser = ChromiumEmbeddedCefBrowserInst.getInstance();
             default -> {
             }
         }
         String url = "http://localhost:" + ApplicationConfig.startPort + "/index.html";
         // String url = "http://localhost:4500";
+        // String url = "http://intelyes.club";
         browser.create(url,
                 () -> new SwingWorker<Void, Void>() {
                     @Override
@@ -79,7 +77,7 @@ public class BrowserEngine {
         this.browser.clearLocalStorage();
     }
 
-    public void sendMessageBySocket(String topic, String message) {
+    public void sendMessageByWebsocket(String topic, String message) {
         this.wsHandler.send(new WsSendData(topic, message));
     }
 

@@ -132,8 +132,8 @@ public class TaskStepFunc {
         TaskInstEntity inst = new TaskInstEntity();
         inst.setZ(zoom);
         inst.setPolygons(polygons);
-        inst.setDividX(divideX);
-        inst.setDividY(divideY);
+        inst.setDivideX(divideX);
+        inst.setDivideY(divideY);
         inst.setXStart(topLeftTile.getX());
         inst.setYStart(topLeftTile.getY());
         inst.setXEnd(bottomRightTile.getX());

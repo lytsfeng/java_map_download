@@ -5,12 +5,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-import javax.annotation.PostConstruct;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import com.jmd.rx.SharedService;
 import com.jmd.rx.SharedType;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

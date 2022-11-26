@@ -1,5 +1,6 @@
 package com.jmd.entity.task;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import lombok.Data;
@@ -7,6 +8,7 @@ import lombok.Data;
 @Data
 public class TaskBlockEntity implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = -2871903479117630871L;
 
 	private String name;

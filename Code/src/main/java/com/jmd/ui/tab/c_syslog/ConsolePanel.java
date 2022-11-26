@@ -1,8 +1,8 @@
 package com.jmd.ui.tab.c_syslog;
 
-import javax.annotation.PostConstruct;
 import javax.swing.JPanel;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 import com.jmd.Application;

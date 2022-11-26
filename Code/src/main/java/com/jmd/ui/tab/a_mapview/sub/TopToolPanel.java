@@ -1,7 +1,6 @@
 package com.jmd.ui.tab.a_mapview.sub;
 
 import javax.swing.JPanel;
-import javax.annotation.PostConstruct;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -10,6 +9,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.TitledBorder;
 
 import com.jmd.taskfunc.TaskState;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -45,7 +45,7 @@ public class TopToolPanel extends JPanel {
 		zoomInButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				browserEngine.sendMessageBySocket("ZoomIn", null);
+				browserEngine.sendMessageByWebsocket("ZoomIn", null);
 			}
 		});
 
@@ -56,7 +56,7 @@ public class TopToolPanel extends JPanel {
 		zoomOutButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				browserEngine.sendMessageBySocket("ZoomOut", null);
+				browserEngine.sendMessageByWebsocket("ZoomOut", null);
 			}
 		});
 
@@ -67,7 +67,7 @@ public class TopToolPanel extends JPanel {
 		gridButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				browserEngine.sendMessageBySocket("GridSwitch", null);
+				browserEngine.sendMessageByWebsocket("GridSwitch", null);
 			}
 		});
 
@@ -82,7 +82,7 @@ public class TopToolPanel extends JPanel {
 					JOptionPane.showMessageDialog(null, "当前正在进行下载任务");
 					return;
 				}
-				browserEngine.sendMessageBySocket("SubmitBlockDownload", null);
+				browserEngine.sendMessageByWebsocket("SubmitBlockDownload", null);
 			}
 		});
 
@@ -93,7 +93,7 @@ public class TopToolPanel extends JPanel {
 		panButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				browserEngine.sendMessageBySocket("Pan", null);
+				browserEngine.sendMessageByWebsocket("Pan", null);
 			}
 		});
 
@@ -104,7 +104,7 @@ public class TopToolPanel extends JPanel {
 		drawButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				browserEngine.sendMessageBySocket("OpenDraw", null);
+				browserEngine.sendMessageByWebsocket("OpenDraw", null);
 			}
 		});
 
@@ -115,7 +115,7 @@ public class TopToolPanel extends JPanel {
 		fitviewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				browserEngine.sendMessageBySocket("Fitview", null);
+				browserEngine.sendMessageByWebsocket("Fitview", null);
 			}
 		});
 
@@ -126,7 +126,7 @@ public class TopToolPanel extends JPanel {
 		removeButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				browserEngine.sendMessageBySocket("RemoveDrawedShape", null);
+				browserEngine.sendMessageByWebsocket("RemoveDrawedShape", null);
 			}
 		});
 

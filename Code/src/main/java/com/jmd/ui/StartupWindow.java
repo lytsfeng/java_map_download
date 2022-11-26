@@ -45,16 +45,23 @@ public class StartupWindow extends JWindow {
 		backgroundPanel.setLayout(null);
 		getContentPane().add(backgroundPanel);
 
-		JLabel titleLabel = new JLabel("Java地图下载器");
+		JLabel titleLabel = new JLabel("地图下载器");
 		titleLabel.setForeground(Color.BLACK);
 		titleLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		titleLabel.setBounds(251, 10, 139, 15);
+		titleLabel.setBounds(251, 10, 139, 21);
 		titleLabel.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
 		backgroundPanel.add(titleLabel);
 
+		JLabel runtimeLabel = new JLabel("Java Swing with JetBrains Runtime");
+		runtimeLabel.setForeground(Color.BLACK);
+		runtimeLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		runtimeLabel.setBounds(120, 272, 270, 21);
+		runtimeLabel.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
+		backgroundPanel.add(runtimeLabel);
+
 		progressLabel = new JLabel("正在加载");
 		progressLabel.setForeground(Color.BLACK);
-		progressLabel.setBounds(10, 275, 380, 15);
+		progressLabel.setBounds(10, 273, 100, 18);
 		progressLabel.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
 		backgroundPanel.add(progressLabel);
 

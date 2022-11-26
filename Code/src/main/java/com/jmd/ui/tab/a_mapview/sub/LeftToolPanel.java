@@ -1,8 +1,8 @@
 package com.jmd.ui.tab.a_mapview.sub;
 
-import javax.annotation.PostConstruct;
 import javax.swing.JPanel;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -55,7 +55,7 @@ public class LeftToolPanel extends JPanel {
 		drawTypePolygonRadioButton.setFont(StaticVar.FONT_SourceHanSansCNNormal_12);
 		drawTypePolygonRadioButton.addItemListener((e) -> {
 			if (drawTypePolygonRadioButton == e.getSource() && drawTypePolygonRadioButton.isSelected()) {
-				browserEngine.sendMessageBySocket("SwitchDrawType", "Polygon");
+				browserEngine.sendMessageByWebsocket("SwitchDrawType", "Polygon");
 			}
 		});
 
@@ -65,7 +65,7 @@ public class LeftToolPanel extends JPanel {
 		drawTypeCircleRadioButton.setFont(StaticVar.FONT_SourceHanSansCNNormal_12);
 		drawTypeCircleRadioButton.addItemListener((e) -> {
 			if (drawTypeCircleRadioButton == e.getSource() && drawTypeCircleRadioButton.isSelected()) {
-				browserEngine.sendMessageBySocket("SwitchDrawType", "Circle");
+				browserEngine.sendMessageByWebsocket("SwitchDrawType", "Circle");
 			}
 		});
 
@@ -157,104 +157,104 @@ public class LeftToolPanel extends JPanel {
 		case OSM_NAME:
 			switch (self) {
 			case "OpenStreetMap":
-				browserEngine.sendMessageBySocket("SwitchResource", "OpenStreet");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "OpenStreet");
 				break;
 			}
 			break;
 		case TIAN_NAME:
 			switch (self) {
 			case "普通图-无标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "Tianditu-Normal-None");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Tianditu-Normal-None");
 				break;
 			case "地形图-无标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "Tianditu-Terrain-None");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Tianditu-Terrain-None");
 				break;
 			case "边界线-无标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "Tianditu-Line");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Tianditu-Line");
 				break;
 			case "标注层":
-				browserEngine.sendMessageBySocket("SwitchResource", "Tianditu-Tip");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Tianditu-Tip");
 				break;
 			}
 			break;
 		case GOOGLE_NAME:
 			switch (self) {
 			case "普通图-带标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "Google-Normal");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Google-Normal");
 				break;
 			case "地形图-带标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "Google-Terrain");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Google-Terrain");
 				break;
 			case "影像图-带标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "Google-Satellite");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Google-Satellite");
 				break;
 			case "影像图-无标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "Google-Satellite-None");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Google-Satellite-None");
 				break;
 			case "路网图-带标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "Google-Street");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Google-Street");
 				break;
 			}
 			break;
 		case AMAP_NAME:
 			switch (self) {
 			case "普通图-带标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "AMap-Normal");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "AMap-Normal");
 				break;
 			case "普通图-无标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "AMap-Normal-None");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "AMap-Normal-None");
 				break;
 			case "影像图-无标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "AMap-Satellite-None");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "AMap-Satellite-None");
 				break;
 			case "路网图-带标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "AMap-Street");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "AMap-Street");
 				break;
 			case "路网图-无标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "AMap-Street-None");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "AMap-Street-None");
 				break;
 			}
 			break;
 		case TENCENT_NAME:
 			switch (self) {
 			case "普通图-带标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "Tencent-Normal");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Tencent-Normal");
 				break;
 			}
 			break;
 		case BING_NAME:
 			switch (self) {
 			case "普通图1-带标注-全球":
-				browserEngine.sendMessageBySocket("SwitchResource", "Bing-Normal-1");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Bing-Normal-1");
 				break;
 			case "普通图1-带标注-国内":
-				browserEngine.sendMessageBySocket("SwitchResource", "Bing-Normal-1-CN");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Bing-Normal-1-CN");
 				break;
 			case "普通图1-无标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "Bing-Normal-1-None");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Bing-Normal-1-None");
 				break;
 			case "普通图2-带标注-全球":
-				browserEngine.sendMessageBySocket("SwitchResource", "Bing-Normal-2");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Bing-Normal-2");
 				break;
 			case "普通图2-带标注-国内":
-				browserEngine.sendMessageBySocket("SwitchResource", "Bing-Normal-2-CN");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Bing-Normal-2-CN");
 				break;
 			case "普通图2-无标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "Bing-Normal-2-None");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Bing-Normal-2-None");
 				break;
 			}
 			break;
 		case BING_WGS84_NAME:
 			switch (self) {
 			case "影像图-无标注":
-				browserEngine.sendMessageBySocket("SwitchResource", "Bing-Satellite-None");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Bing-Satellite-None");
 				break;
 			}
 			break;
 		case BAIDU_NAME:
 			switch (self) {
 			case "百度瓦片图旧版":
-				browserEngine.sendMessageBySocket("SwitchResource", "Baidu-Normal");
+				browserEngine.sendMessageByWebsocket("SwitchResource", "Baidu-Normal");
 				break;
 			}
 			break;

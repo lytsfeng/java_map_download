@@ -8,10 +8,9 @@ import javax.swing.*;
 
 import com.jmd.rx.SharedService;
 import com.jmd.rx.SharedType;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
 
 @Component
 public class DonateFrame extends JFrame {
@@ -57,7 +56,7 @@ public class DonateFrame extends JFrame {
 	}
 
 	private void subShared() {
-		sharedService.sub(SharedType.CHANGE_THEME).subscribe((res) -> {
+		sharedService.sub(SharedType.UPDATE_UI).subscribe((res) -> {
 			SwingUtilities.invokeLater(() -> {
 				SwingUtilities.updateComponentTreeUI(this);
 			});

@@ -6,7 +6,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import javax.annotation.PostConstruct;
 import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -21,16 +20,15 @@ import com.jmd.rx.SharedService;
 import com.jmd.rx.SharedType;
 import com.jmd.taskfunc.TaskState;
 import com.jmd.ui.tab.a_mapview.sub.BrowserPanel;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.jmd.browser.BrowserType;
 import com.jmd.common.StaticVar;
 import com.jmd.entity.task.TaskAllInfoEntity;
 import com.jmd.entity.theme.ThemeEntity;
 import com.jmd.taskfunc.TaskExecFunc;
 import com.jmd.ui.tab.a_mapview.sub.BottomInfoPanel;
-import com.jmd.util.CommonUtils;
 import com.jmd.util.TaskUtils;
 
 import javax.swing.ImageIcon;
@@ -74,32 +72,6 @@ public class MainMenuBar extends JMenuBar {
         styleMenu.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
         this.add(styleMenu);
 
-//        if (StaticVar.IS_Windows) {
-//            JMenuItem themeWinMenuItem = new JMenuItem("Windows默认");
-//            themeWinMenuItem.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
-//            styleMenu.add(themeWinMenuItem);
-//            themeWinMenuItem.addMouseListener(new MouseAdapter() {
-//                @Override
-//                public void mouseReleased(MouseEvent e) {
-//                    if (e.getButton() == 1) {
-//                        applicationTheme.change("Windows", "com.sun.java.swing.plaf.windows.WindowsLookAndFeel", null);
-//                    }
-//                }
-//            });
-//
-//            JMenuItem themeWinClassicMenuItem = new JMenuItem("Windows经典");
-//            themeWinClassicMenuItem.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
-//            styleMenu.add(themeWinClassicMenuItem);
-//            themeWinClassicMenuItem.addMouseListener(new MouseAdapter() {
-//                @Override
-//                public void mouseReleased(MouseEvent e) {
-//                    if (e.getButton() == 1) {
-//                        applicationTheme.change("Windows Classic", "com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel", null);
-//                    }
-//                }
-//            });
-//        }
-
         for (ThemeEntity parent : StaticVar.THEME_LIST) {
             JMenu themeMenu = new JMenu(parent.getName());
             themeMenu.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
@@ -115,6 +87,7 @@ public class MainMenuBar extends JMenuBar {
                             String name = parent.getName() + " " + theme.getName();
                             Map<String, Object> map = new HashMap<>();
                             map.put("name", name);
+                            map.put("type", theme.getType());
                             map.put("clazz", theme.getClazz());
                             sharedService.pub(SharedType.CHANGE_THEME, map);
                         }
@@ -147,48 +120,11 @@ public class MainMenuBar extends JMenuBar {
             public void mousePressed(MouseEvent e) {
                 if (e.getButton() == 1) {
                     browserPanel.toggleDevTools();
-                }
-            }
-        });
-
-        JMenu webViewMenu = new JMenu("WebView实现");
-        webViewMenu.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
-        mapMenu.add(webViewMenu);
-
-        JMenuItem jxBrowserMenuItem = new JMenuItem("JxBrowser Chromium");
-        jxBrowserMenuItem.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
-        if (CommonUtils.isWindows()) {
-            jxBrowserMenuItem.setIcon(null);
-        } else {
-            jxBrowserMenuItem.setIcon(selectedIcon);
-        }
-        webViewMenu.add(jxBrowserMenuItem);
-
-        JMenuItem jcefMenuItem = new JMenuItem("Chromium Embedded Framework");
-        jcefMenuItem.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
-        jcefMenuItem.setIcon(selectedIcon);
-        if (CommonUtils.isWindows()) {
-            jcefMenuItem.setIcon(selectedIcon);
-            webViewMenu.add(jcefMenuItem);
-        }
-
-        jxBrowserMenuItem.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getButton() == 1) {
-                    jxBrowserMenuItem.setIcon(selectedIcon);
-                    jcefMenuItem.setIcon(null);
-                    browserPanel.changeBrowser(BrowserType.TEAMDEV_JX_BROWSER);
-                }
-            }
-        });
-        jcefMenuItem.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getButton() == 1) {
-                    jxBrowserMenuItem.setIcon(null);
-                    jcefMenuItem.setIcon(selectedIcon);
-                    browserPanel.changeBrowser(BrowserType.CHROMIUM_EMBEDDED_CEF_BROWSER);
+                    if (browserPanel.isDevToolOpen()) {
+                        consoleMenuItem.setIcon(selectedIcon);
+                    } else {
+                        consoleMenuItem.setIcon(null);
+                    }
                 }
             }
         });
@@ -249,7 +185,7 @@ public class MainMenuBar extends JMenuBar {
                         JOptionPane.showMessageDialog(null, "当前正在进行下载任务");
                         return;
                     }
-                    browserEngine.sendMessageBySocket("SubmitWorldDownload", null);
+                    browserEngine.sendMessageByWebsocket("SubmitWorldDownload", null);
                 }
             }
         });
@@ -310,7 +246,7 @@ public class MainMenuBar extends JMenuBar {
             }
         });
 
-        themeNameLabel.setText(ApplicationSetting.getSetting().getThemeName());
+        themeNameLabel.setText("Theme: " + ApplicationSetting.getSetting().getThemeName());
         themeNameLabel.setFont(StaticVar.FONT_SourceHanSansCNNormal_13);
         themeNameLabel.setFocusable(false);
         themeNameLabel.setEnabled(false);
@@ -322,7 +258,7 @@ public class MainMenuBar extends JMenuBar {
 
     private void subShared() {
         sharedService.sub(SharedType.UPDATE_THEME_TEXT).subscribe((res) -> {
-            themeNameLabel.setText((String) res);
+            themeNameLabel.setText("Theme: " + res);
         });
     }
 

@@ -2,10 +2,10 @@ package com.jmd.ui.tab.a_mapview.sub;
 
 import java.awt.Color;
 
-import javax.annotation.PostConstruct;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 import com.jmd.common.StaticVar;

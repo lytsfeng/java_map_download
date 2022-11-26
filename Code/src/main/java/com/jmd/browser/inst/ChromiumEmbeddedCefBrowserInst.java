@@ -2,10 +2,13 @@ package com.jmd.browser.inst;
 
 import java.awt.Component;
 
+import com.jetbrains.cef.JCefAppConfig;
+import com.jmd.ApplicationConfig;
 import org.cef.CefApp;
 import org.cef.CefClient;
 import org.cef.CefSettings;
 import org.cef.browser.CefBrowser;
+import org.cef.browser.CefRendering;
 
 import com.jmd.browser.inst.base.AbstractBrowser;
 import com.jmd.callback.CommonAsyncCallback;
@@ -23,22 +26,18 @@ public class ChromiumEmbeddedCefBrowserInst implements AbstractBrowser {
     @Override
     public void create(String url, CommonAsyncCallback callback) {
         if (!isCreated) {
-            CefSettings settings = new CefSettings();
-            settings.windowless_rendering_enabled = false;
-            settings.cache_path = System.getProperty("user.dir") + "/context/jcef/data";
+            String[] args = JCefAppConfig.getInstance().getAppArgs();
+            CefSettings settings = JCefAppConfig.getInstance().getCefSettings();
+            settings.cache_path = System.getProperty("user.dir") + "/context/jcef/data_" + ApplicationConfig.startPort;
             // 获取CefApp实例
-            cefApp = CefApp.getInstance(settings);
-            // 创建客户端实例
-            cefClient = cefApp.createClient();
-            // 创建浏览器实例
-            browser = cefClient.createBrowser(url, false, false);
+            CefApp.startup(args);
+            cefApp = CefApp.getInstance(args, settings);
             isCreated = true;
-        } else {
-            // 创建客户端实例
-            cefClient = cefApp.createClient();
-            // 创建浏览器实例
-            browser = cefClient.createBrowser(url, false, false);
         }
+        // 创建客户端实例
+        cefClient = cefApp.createClient();
+        // 创建浏览器实例
+        browser = cefClient.createBrowser(url, CefRendering.DEFAULT, true);
         // 完成回调
         callback.execute();
     }
@@ -65,8 +64,7 @@ public class ChromiumEmbeddedCefBrowserInst implements AbstractBrowser {
 
     @Override
     public String getVersion() {
-        return "Chromium Embedded Framework (CEF), " + "JcefVersion:" + cefApp.getVersion().getJcefVersion() + ", "
-                + "ChromeVersion:" + cefApp.getVersion().getChromeVersion();
+        return "Chromium Embedded Framework (CEF), " + "ChromeVersion: " + cefApp.getVersion().getChromeVersion();
     }
 
     @Override
@@ -103,7 +101,7 @@ public class ChromiumEmbeddedCefBrowserInst implements AbstractBrowser {
 
     }
 
-    public static ChromiumEmbeddedCefBrowserInst getIstance() {
+    public static ChromiumEmbeddedCefBrowserInst getInstance() {
         if (instance == null) {
             synchronized (ChromiumEmbeddedCefBrowserInst.class) {
                 if (instance == null) {

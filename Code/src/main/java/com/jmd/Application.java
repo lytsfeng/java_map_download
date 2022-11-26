@@ -4,7 +4,6 @@ import java.io.PrintStream;
 
 import javax.swing.*;
 
-import com.jmd.common.StaticVar;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringBootVersion;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,25 +20,17 @@ public class Application {
     @Getter
     private static boolean startFinish = false;
 
+    static {
+        System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
+    }
+
     public static void main(String[] args) {
 
-        // 加载OpenCV
-        System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
         // Print
         Application.print();
-        // 加载设置
-        ApplicationSetting.load();
         // 加载界面主题
         try {
-            if (StaticVar.IS_Windows_10 || StaticVar.IS_Windows_11) {
-                // Win10直接支持窗口装饰
-                UIManager.setLookAndFeel(ApplicationSetting.getSetting().getThemeClazz());
-                JFrame.setDefaultLookAndFeelDecorated(true);
-                JDialog.setDefaultLookAndFeelDecorated(true);
-            } else {
-                // 其他系统需要先通过jtattoo触发
-                UIManager.setLookAndFeel("com.jtattoo.plaf.fast.FastLookAndFeel");
-            }
+            UIManager.setLookAndFeel(ApplicationSetting.getSetting().getThemeClazz());
         } catch (Exception e1) {
             e1.printStackTrace();
         }
@@ -83,7 +74,7 @@ public class Application {
     }
 
     private static void print() {
-        System.out.println("Springboot Version: " + SpringBootVersion.getVersion());
+        System.out.println("SpringBoot Version: " + SpringBootVersion.getVersion());
         System.out.println("User OS: " + System.getProperty("os.name"));
         System.out.println("Java Name: " + System.getProperty("java.vm.name"));
         System.out.println("Java Version: " + System.getProperty("java.vm.version"));

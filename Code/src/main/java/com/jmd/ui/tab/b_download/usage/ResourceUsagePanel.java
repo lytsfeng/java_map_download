@@ -3,11 +3,11 @@ package com.jmd.ui.tab.b_download.usage;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
-import javax.annotation.PostConstruct;
 import javax.swing.JPanel;
 
 import com.jmd.rx.SharedService;
 import com.jmd.rx.SharedType;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

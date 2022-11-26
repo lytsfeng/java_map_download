@@ -1,5 +1,6 @@
 package com.jmd.entity.task;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -10,6 +11,7 @@ import lombok.Data;
 @Data
 public class TaskAllInfoEntity implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 6301744429585359593L;
 
 	private HttpClientConfigEntity httpConfig;

@@ -1,21 +1,18 @@
 package com.jmd.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.SystemTray;
-import java.awt.Toolkit;
-import java.awt.TrayIcon;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.annotation.PostConstruct;
 import javax.swing.*;
 
 import com.jmd.rx.SharedService;
 import com.jmd.rx.SharedType;
 import com.jmd.taskfunc.TaskState;
+import com.jmd.util.CommonUtils;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -56,9 +53,24 @@ public class MainFrame extends JFrame {
     @PostConstruct
     private void init() {
 
-        this.setIconImage(
-                Toolkit.getDefaultToolkit().getImage(MainFrame.class.getResource("/com/jmd/assets/icon/map.png")));
+        /* 布局 */
         this.getContentPane().setLayout(new BorderLayout(0, 0));
+
+        /* 任务栏图标 */
+        Toolkit defaultToolkit = Toolkit.getDefaultToolkit();
+        Image image = defaultToolkit.getImage(MainFrame.class.getResource("/com/jmd/assets/icon/map.png"));
+        if (CommonUtils.isMac()) {
+            Taskbar taskbar = Taskbar.getTaskbar();
+            try {
+                taskbar.setIconImage(image);
+            } catch (UnsupportedOperationException e) {
+                System.out.println("The os does not support: 'taskbar.setIconImage'");
+            } catch (SecurityException e) {
+                System.out.println("There was a security exception for: 'taskbar.setIconImage'");
+            }
+        } else {
+            this.setIconImage(image);
+        }
 
         /* Menu菜单 */
         this.setJMenuBar(mainMenuBar);
@@ -75,8 +87,6 @@ public class MainFrame extends JFrame {
         /* 任务栏图标菜单 */
         if (SystemTray.isSupported()) {
             SystemTray tray = SystemTray.getSystemTray();
-            java.awt.Image image = Toolkit.getDefaultToolkit()
-                    .getImage(MainFrame.class.getResource("/com/jmd/assets/icon/map.png"));
             java.awt.PopupMenu popupMenu = new java.awt.PopupMenu();
             java.awt.MenuItem openItem = new java.awt.MenuItem("show");
             openItem.setFont(StaticVar.FONT_SourceHanSansCNNormal_12);
@@ -107,7 +117,7 @@ public class MainFrame extends JFrame {
             }
         }
 
-        this.setTitle("\u5730\u56FE\u4E0B\u8F7D\u5668");
+        this.setTitle("地图下载器");
         this.setSize(new Dimension(1280, 720));
         this.setMinimumSize(new Dimension(1150, 650));
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -128,7 +138,7 @@ public class MainFrame extends JFrame {
     }
 
     private void subShared() {
-        sharedService.sub(SharedType.CHANGE_THEME).subscribe((res) -> {
+        sharedService.sub(SharedType.UPDATE_UI).subscribe((res) -> {
             SwingUtilities.invokeLater(() -> {
                 SwingUtilities.updateComponentTreeUI(this);
             });

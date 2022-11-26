@@ -9,13 +9,26 @@
     <name>地图下载器</name>
     <description>地图下载器</description>
 
+    <!--
+        基于spring boot
+        不能使用dependencyManagement
+        否则会打包失败
+        直接使用mvn clean package即可
+     -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.0.0</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
     <properties>
         <java.version>17</java.version>
-        <spring-boot.version>2.7.4</spring-boot.version>
-        <druid.version>1.2.8</druid.version>
-        <mybatis.version>2.2.2</mybatis.version>
-        <commons-io.version>2.8.0</commons-io.version>
-        <fastjson.version>1.2.79</fastjson.version>
+        <spring-boot.version>3.0.0</spring-boot.version>
+        <druid.version>1.2.15</druid.version>
+        <mybatis-spring.version>3.0.0</mybatis-spring.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <fastjson2.version>2.0.19</fastjson2.version>
     </properties>
 
     <dependencies>
@@ -68,7 +81,7 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis.version}</version>
+            <version>${mybatis-spring.version}</version>
         </dependency>
         <!-- mybatis -->
 
@@ -91,14 +104,15 @@
         <dependency>
             <groupId>io.reactivex.rxjava2</groupId>
             <artifactId>rxjava</artifactId>
+            <version>2.2.21</version>
         </dependency>
         <!-- rxjava -->
 
         <!-- fastjson -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>${fastjson2.version}</version>
         </dependency>
         <!-- fastjson -->
 
@@ -109,13 +123,30 @@
         </dependency>
         <!-- lombok -->
 
+        <!-- opencv -->
+        <dependency>
+            <groupId>org.openpnp</groupId>
+            <artifactId>opencv</artifactId>
+            <version>4.5.5-1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/opencv/opencv-4.5.5-1.jar</systemPath>
+        </dependency>
+        <!-- opencv -->
+
         <!-- flatlaf -->
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf</artifactId>
-            <version>0.44</version>
+            <version>2.6</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/ui/flatlaf-0.44.jar</systemPath>
+            <systemPath>${project.basedir}/lib/ui/flatlaf-2.6.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf-intellij-themes</artifactId>
+            <version>2.6</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/ui/flatlaf-intellij-themes-2.6.jar</systemPath>
         </dependency>
         <!-- flatlaf -->
 
@@ -129,91 +160,7 @@
         </dependency>
         <!-- JTattoo -->
 
-        <!-- opencv -->
-        <dependency>
-            <groupId>org.openpnp</groupId>
-            <artifactId>opencv</artifactId>
-            <version>4.5.1-2</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/opencv/opencv-4.5.1-2.jar</systemPath>
-        </dependency>
-        <!-- opencv -->
-
-        <!-- jxbrowser -->
-        <dependency>
-            <groupId>com.teamdev.jxbrowser</groupId>
-            <artifactId>jxbrowser-core</artifactId>
-            <version>6.24.3</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/jxbrowser/jxbrowser-6.24.3.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>com.teamdev.jxbrowser</groupId>
-            <artifactId>jxbrowser-win64</artifactId>
-            <version>6.24.3</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/jxbrowser/jxbrowser-win64-6.24.3.jar
-            </systemPath>
-        </dependency>
-        <!-- <dependency> <groupId>com.teamdev.jxbrowser</groupId> <artifactId>jxbrowser-linux64</artifactId>
-            <version>6.24.3</version> <scope>system</scope> <systemPath>${project.basedir}/lib/jxbrowser/jxbrowser-linux64-6.24.3.jar</systemPath>
-            </dependency> -->
-        <!--<dependency> <groupId>com.teamdev.jxbrowser</groupId> <artifactId>jxbrowser-mac</artifactId>
-            <version>6.24.3</version> <scope>system</scope> <systemPath>${project.basedir}/lib/jxbrowser/jxbrowser-mac-6.24.3.jar</systemPath>
-            </dependency> -->
-        <!-- jxbrowser -->
-
-        <!-- chromium embedded cef -->
-        <dependency>
-            <groupId>jcef</groupId>
-            <artifactId>jcef</artifactId>
-            <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/jcef/jcef.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jogl-all</groupId>
-            <artifactId>jogl-all</artifactId>
-            <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/jcef/jogl-all.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>jogl-all-natives-windows-amd64</groupId>
-            <artifactId>jogl-all-natives-windows-amd64</artifactId>
-            <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/jcef/jogl-all-natives-windows-amd64.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>gluegen-rt</groupId>
-            <artifactId>gluegen-rt</artifactId>
-            <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/jcef/gluegen-rt.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>gluegen-rt-natives-windows-amd64</groupId>
-            <artifactId>gluegen-rt-natives-windows-amd64</artifactId>
-            <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/jcef/gluegen-rt-natives-windows-amd64.jar</systemPath>
-        </dependency>
-        <!-- chromium embedded cef -->
-
     </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <finalName>map-download</finalName>
@@ -221,6 +168,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
                 <configuration>
                     <includeSystemScope>true</includeSystemScope>
                 </configuration>
@@ -228,6 +176,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -238,6 +187,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -252,6 +202,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <id>copy</id>
@@ -268,6 +219,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.0</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
@@ -276,6 +228,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M7</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>

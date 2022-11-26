@@ -7,6 +7,7 @@ import javax.swing.*;
 import com.jmd.rx.SharedService;
 import com.jmd.rx.SharedType;
 import com.jmd.taskfunc.TaskState;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +19,6 @@ import com.jmd.taskfunc.TaskExecFunc;
 import com.jmd.ui.MainFrame;
 import com.jmd.util.TaskUtils;
 
-import javax.annotation.PostConstruct;
 import javax.swing.border.TitledBorder;
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
@@ -410,7 +410,7 @@ public class DownloadConfigFrame extends JFrame {
     }
 
     private void subShared() {
-        sharedService.sub(SharedType.CHANGE_THEME).subscribe((res) -> {
+        sharedService.sub(SharedType.UPDATE_UI).subscribe((res) -> {
             SwingUtilities.invokeLater(() -> {
                 SwingUtilities.updateComponentTreeUI(this);
             });
