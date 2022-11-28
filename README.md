@@ -16,11 +16,13 @@
 
 #### Build下载地址（已打包的可执行程序，解压即可运行）
 - 由于Gitee Release单个附件不能超过100M，故使用网盘发行Build（网盘中同样可以下载到旧版）
-- 更新日期：2022-03-25（下载最新版注意该更新时间）
-- 百度网盘：https://pan.baidu.com/s/1lRrZvTWAB7AFyQ8zChl5oQ 提取码：y5wj 
-- 天翼云盘：https://cloud.189.cn/t/IBFrIzIFZz6j 访问码:5bgb
+- 更新日期：2022-11-26（下载最新版注意该更新时间）
 - 重要提示：下载谷歌地图需正确使用代理，不能下载就是代理没设置好
 - 若无法打开，请将文件夹改为英文，并注意文件夹所在详细路径是否为全英文
+- 使用多网盘发布，防止链接失效
+- 百度网盘：https://pan.baidu.com/s/1CA7sdH6zL4OjJxVydKwrWQ  密码：mdve 
+- 天翼云盘：https://cloud.189.cn/t/IBFrIzIFZz6j 密码:5bgb
+- 联通云盘：https://pan.wo.cn/s/4i3H4Z34 密码:wIGM
 
 #### 更新历史
 - 2022-11-26：JRE换为JetBrains Runtime 17，更新至springboot 3.0.0，删除JxBrowser与JavaFX WebView，优化大量代码，更新谷歌地图域名
