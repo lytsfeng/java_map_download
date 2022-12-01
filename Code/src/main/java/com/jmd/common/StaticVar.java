@@ -10,6 +10,8 @@ import com.jmd.entity.theme.ThemeEntity;
 import com.jmd.util.CommonUtils;
 import com.jmd.util.FontUtils;
 
+import javax.swing.*;
+
 public class StaticVar {
 
     public static final boolean IS_Mac = CommonUtils.isMac();
@@ -120,8 +122,17 @@ public class StaticVar {
                     private static final long serialVersionUID = -8432603123832743410L;
 
                     {
-                        add(new ThemeEntity(1, "Normal", "com.sun.java.swing.plaf.windows.WindowsLookAndFeel"));
+                        add(new ThemeEntity(1, "Default", UIManager.getSystemLookAndFeelClassName()));
                         add(new ThemeEntity(1, "Classic", "com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel"));
+                    }
+                }));
+            } else if (StaticVar.IS_Mac) {
+                add(new ThemeEntity("Mac OS", new ArrayList<>() {
+                    @Serial
+                    private static final long serialVersionUID = 7116227973269334283L;
+
+                    {
+                        add(new ThemeEntity(1, "Default", UIManager.getSystemLookAndFeelClassName()));
                     }
                 }));
             }

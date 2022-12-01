@@ -9,11 +9,15 @@ import com.jmd.Application;
 import com.jmd.common.StaticVar;
 
 import java.awt.BorderLayout;
+import java.io.Serial;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 @Component
 public class ConsolePanel extends JPanel {
+
+	@Serial
+	private static final long serialVersionUID = 1300659845262270172L;
 
 //	public ConsolePanel() {
 //		init();

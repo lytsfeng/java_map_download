@@ -5,6 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.Serial;
 
 import javax.swing.*;
 
@@ -25,6 +26,9 @@ import com.jmd.ui.tab.c_syslog.ConsolePanel;
 
 @Component
 public class MainFrame extends JFrame {
+
+    @Serial
+    private static final long serialVersionUID = -628803972270259148L;
 
     @Autowired
     private SharedService sharedService;

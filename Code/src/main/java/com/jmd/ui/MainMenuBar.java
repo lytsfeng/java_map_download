@@ -3,6 +3,7 @@ package com.jmd.ui;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.Serial;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -35,6 +36,9 @@ import javax.swing.ImageIcon;
 
 @Component
 public class MainMenuBar extends JMenuBar {
+
+    @Serial
+    private static final long serialVersionUID = 6614126656093043485L;
 
     @Autowired
     private SharedService sharedService;

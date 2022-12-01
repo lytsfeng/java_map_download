@@ -19,9 +19,13 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.Serial;
 
 @Component
 public class ProxySettingFrame extends JFrame {
+
+	@Serial
+	private static final long serialVersionUID = -3198278534105518944L;
 
 	private JCheckBox proxyEnableCheckBox;
 	private JTextField hostnameInputTextField;

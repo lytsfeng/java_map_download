@@ -2,6 +2,7 @@ package com.jmd.ui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.Serial;
 import java.util.Objects;
 
 import javax.swing.*;
@@ -15,7 +16,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class DonateFrame extends JFrame {
 
-    @Autowired
+	@Serial
+	private static final long serialVersionUID = -7739920320485676764L;
+
+	@Autowired
     private SharedService sharedService;
 
 //	public DonateFrame() {

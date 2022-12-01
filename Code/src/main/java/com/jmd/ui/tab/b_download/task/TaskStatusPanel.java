@@ -3,6 +3,7 @@ package com.jmd.ui.tab.b_download.task;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.io.Serial;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,6 +18,9 @@ import com.jmd.common.StaticVar;
 
 @Component
 public class TaskStatusPanel extends JPanel {
+
+    @Serial
+    private static final long serialVersionUID = 1609822863496587388L;
 
     @Autowired
     private SharedService sharedService;

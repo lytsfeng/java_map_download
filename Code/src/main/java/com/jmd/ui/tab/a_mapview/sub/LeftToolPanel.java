@@ -20,9 +20,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.io.Serial;
 
 @Component
 public class LeftToolPanel extends JPanel {
+
+	@Serial
+	private static final long serialVersionUID = -5741592190558141036L;
 
 	private static final String OSM_NAME = "OSM(wgs84)(可能需要代理)";
 	private static final String TIAN_NAME = "天地图(wgs84)";

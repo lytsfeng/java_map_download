@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import java.awt.event.ItemEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.Serial;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -33,6 +34,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 @Slf4j
 @Component
 public class DownloadPreviewFrame extends JFrame {
+
+    @Serial
+    private static final long serialVersionUID = 5621937977510720723L;
 
     @Autowired
     private SharedService sharedService;

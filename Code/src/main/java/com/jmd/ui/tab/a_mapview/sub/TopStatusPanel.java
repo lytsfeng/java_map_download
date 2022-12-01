@@ -1,6 +1,7 @@
 package com.jmd.ui.tab.a_mapview.sub;
 
 import java.awt.Color;
+import java.io.Serial;
 
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
@@ -18,6 +19,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 @Component
 public class TopStatusPanel extends JPanel {
+
+	@Serial
+	private static final long serialVersionUID = 570349647502262520L;
 
 	private JLabel proxyStatusValue;
 

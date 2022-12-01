@@ -1,6 +1,7 @@
 package com.jmd.ui.tab.b_download.merge;
 
 import java.awt.BorderLayout;
+import java.io.Serial;
 import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,6 +18,9 @@ import com.jmd.common.StaticVar;
 
 @Component
 public class TileMergeProgressPanel extends JPanel {
+
+    @Serial
+    private static final long serialVersionUID = -1882793538888709465L;
 
     @Autowired
     private SharedService sharedService;

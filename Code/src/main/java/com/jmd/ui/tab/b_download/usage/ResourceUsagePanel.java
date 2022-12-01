@@ -2,6 +2,7 @@ package com.jmd.ui.tab.b_download.usage;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.io.Serial;
 
 import javax.swing.JPanel;
 
@@ -20,6 +21,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 @Component
 public class ResourceUsagePanel extends JPanel {
+
+    @Serial
+    private static final long serialVersionUID = -8057463059748579417L;
 
     @Autowired
     private SharedService sharedService;

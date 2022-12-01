@@ -12,9 +12,13 @@ import lombok.Getter;
 import javax.swing.JLabel;
 import javax.swing.border.TitledBorder;
 import java.awt.BorderLayout;
+import java.io.Serial;
 
 @Component
 public class BottomInfoPanel extends JPanel {
+
+    @Serial
+    private static final long serialVersionUID = -5223551680329511378L;
 
     @Getter
     private JLabel contentLabel;

@@ -29,7 +29,7 @@ public class BrowserEngine {
             default -> {
             }
         }
-        String url = "http://localhost:" + ApplicationConfig.startPort + "/index.html";
+        String url = "http://localhost:" + ApplicationConfig.startPort + "/web/index.html";
         // String url = "http://localhost:4500";
         // String url = "http://intelyes.club";
         browser.create(url,

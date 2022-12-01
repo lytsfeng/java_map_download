@@ -29,6 +29,7 @@ import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.GroupLayout.Alignment;
@@ -36,6 +37,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 @Component
 public class DownloadConfigFrame extends JFrame {
+
+    @Serial
+    private static final long serialVersionUID = 394597878094632313L;
 
     @Autowired
     private SharedService sharedService;
@@ -77,7 +81,7 @@ public class DownloadConfigFrame extends JFrame {
         getContentPane().setLayout(null);
 
         JPanel layerPanel = new JPanel();
-        layerPanel.setBorder(new TitledBorder(null, "\u7B49\u7EA7\u9009\u62E9", TitledBorder.LEADING, TitledBorder.TOP,
+        layerPanel.setBorder(new TitledBorder(null, "等级选择", TitledBorder.LEADING, TitledBorder.TOP,
                 StaticVar.FONT_SourceHanSansCNNormal_13, null));
         layerPanel.setBounds(10, 10, 150, 306);
         getContentPane().add(layerPanel);
@@ -168,7 +172,7 @@ public class DownloadConfigFrame extends JFrame {
 
         /* 其他设置 */
         JPanel configPanel = new JPanel();
-        configPanel.setBorder(new TitledBorder(null, "\u5176\u4ED6\u8BBE\u7F6E", TitledBorder.LEADING, TitledBorder.TOP,
+        configPanel.setBorder(new TitledBorder(null, "其他设置", TitledBorder.LEADING, TitledBorder.TOP,
                 StaticVar.FONT_SourceHanSansCNNormal_13, null));
         configPanel.setBounds(170, 10, 271, 306);
         getContentPane().add(configPanel);
@@ -263,7 +267,7 @@ public class DownloadConfigFrame extends JFrame {
 
         /* 保存路径 */
         JPanel pathPanel = new JPanel();
-        pathPanel.setBorder(new TitledBorder(null, "\u4FDD\u5B58\u8DEF\u5F84", TitledBorder.LEADING, TitledBorder.TOP,
+        pathPanel.setBorder(new TitledBorder(null, "保存路径", TitledBorder.LEADING, TitledBorder.TOP,
                 StaticVar.FONT_SourceHanSansCNNormal_13, null));
         pathPanel.setBounds(10, 326, 426, 157);
         getContentPane().add(pathPanel);

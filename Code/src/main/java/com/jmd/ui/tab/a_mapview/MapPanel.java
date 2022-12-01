@@ -14,9 +14,13 @@ import com.jmd.ui.tab.a_mapview.sub.TopStatusPanel;
 import com.jmd.ui.tab.a_mapview.sub.TopToolPanel;
 
 import java.awt.BorderLayout;
+import java.io.Serial;
 
 @Component
 public class MapPanel extends JPanel {
+
+	@Serial
+	private static final long serialVersionUID = 7958127591579659670L;
 
 	@Autowired
 	private TopToolPanel topToolPanel;

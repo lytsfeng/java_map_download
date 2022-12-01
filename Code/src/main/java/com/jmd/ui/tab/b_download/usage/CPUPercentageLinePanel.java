@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.io.Serial;
 
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -16,6 +17,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CPUPercentageLinePanel extends JPanel {
+
+    @Serial
+    private static final long serialVersionUID = -910619749930001376L;
 
     @Autowired
     private SharedService sharedService;

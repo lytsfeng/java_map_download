@@ -1,6 +1,7 @@
 package com.jmd.ui.tab.a_mapview.sub;
 
 import java.awt.*;
+import java.io.Serial;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -16,6 +17,9 @@ import com.jmd.common.StaticVar;
 
 @Component
 public class BrowserPanel extends JPanel {
+
+    @Serial
+    private static final long serialVersionUID = 6855207015589162698L;
 
     @Autowired
     private BottomInfoPanel bottomInfoPanel;

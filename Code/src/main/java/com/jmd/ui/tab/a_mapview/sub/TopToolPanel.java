@@ -19,9 +19,13 @@ import com.jmd.taskfunc.TaskExecFunc;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.Serial;
 
 @Component
 public class TopToolPanel extends JPanel {
+
+	@Serial
+	private static final long serialVersionUID = 3809138500637764353L;
 
 	@Autowired
 	private TaskExecFunc taskExec;

@@ -18,10 +18,14 @@ import lombok.Getter;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.io.Serial;
 import java.util.Objects;
 import javax.swing.border.LineBorder;
 
 public class StartupWindow extends JWindow {
+
+	@Serial
+	private static final long serialVersionUID = -8349753659929843051L;
 
 	private static volatile StartupWindow instance;
 	@Getter

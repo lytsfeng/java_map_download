@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.TitledBorder;
+import java.io.Serial;
 import java.text.SimpleDateFormat;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
@@ -32,6 +33,9 @@ import java.awt.event.MouseEvent;
 
 @Component
 public class DownloadTaskPanel extends JPanel {
+
+    @Serial
+    private static final long serialVersionUID = 7654815968814511149L;
 
     @Autowired
     private SharedService sharedService;

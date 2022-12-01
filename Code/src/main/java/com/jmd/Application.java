@@ -4,6 +4,7 @@ import java.io.PrintStream;
 
 import javax.swing.*;
 
+import com.jmd.common.StaticVar;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringBootVersion;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,6 +22,11 @@ public class Application {
     private static boolean startFinish = false;
 
     static {
+        if (StaticVar.IS_Windows) {
+            System.setProperty("sun.java2d.d3d", "true");
+        } else if (StaticVar.IS_Mac) {
+            System.setProperty("sun.java2d.metal", "true");
+        }
         System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
     }
 
@@ -31,8 +37,8 @@ public class Application {
         // 加载界面主题
         try {
             UIManager.setLookAndFeel(ApplicationSetting.getSetting().getThemeClazz());
-        } catch (Exception e1) {
-            e1.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         // 加载启动界面
         SwingUtilities.invokeLater(() -> StartupWindow.getIstance().setVisible(true));

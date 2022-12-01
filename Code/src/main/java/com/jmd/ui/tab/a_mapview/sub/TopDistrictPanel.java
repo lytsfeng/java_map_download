@@ -3,6 +3,7 @@ package com.jmd.ui.tab.a_mapview.sub;
 import java.awt.event.ItemEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +38,9 @@ import javax.swing.JButton;
 @Component
 public class TopDistrictPanel extends JPanel {
 
+	@Serial
+	private static final long serialVersionUID = 5776857956969159790L;
+
 	@Autowired
 	private BrowserEngine browserEngine;
 	@Autowired
@@ -46,9 +50,9 @@ public class TopDistrictPanel extends JPanel {
 	private JComboBox<String> cityComboBox;
 	private JComboBox<String> districtComboBox;
 
-	private HashMap<String, String> provinceAdcodeMap = new HashMap<>();
-	private HashMap<String, String> cityAdcodeMap = new HashMap<>();
-	private HashMap<String, String> districtAdcodeMap = new HashMap<>();
+	private final HashMap<String, String> provinceAdcodeMap = new HashMap<>();
+	private final HashMap<String, String> cityAdcodeMap = new HashMap<>();
+	private final HashMap<String, String> districtAdcodeMap = new HashMap<>();
 
 //	public TopDistrictPanel() {
 //		init();

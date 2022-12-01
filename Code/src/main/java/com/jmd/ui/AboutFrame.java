@@ -20,6 +20,7 @@ import com.jmd.util.CommonUtils;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.io.Serial;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Objects;
@@ -27,6 +28,9 @@ import javax.swing.border.EtchedBorder;
 
 @Component
 public class AboutFrame extends JFrame {
+
+	@Serial
+	private static final long serialVersionUID = -5612514860347124476L;
 
 	private final String git = "https://gitee.com/CrimsonHu/java_map_download";
 

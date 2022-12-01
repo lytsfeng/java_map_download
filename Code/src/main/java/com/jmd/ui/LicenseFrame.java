@@ -14,10 +14,14 @@ import org.springframework.stereotype.Component;
 import com.jmd.common.StaticVar;
 
 import java.awt.BorderLayout;
+import java.io.Serial;
 import javax.swing.border.TitledBorder;
 
 @Component
 public class LicenseFrame extends JFrame {
+
+	@Serial
+	private static final long serialVersionUID = -1256751005617221216L;
 
 	@Autowired
 	private SharedService sharedService;

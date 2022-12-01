@@ -1,6 +1,6 @@
 package com.jmd.rx;
 
-import io.reactivex.subjects.PublishSubject;
+import io.reactivex.rxjava3.subjects.PublishSubject;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
